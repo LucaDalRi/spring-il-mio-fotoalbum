@@ -19,7 +19,7 @@ public class Foto {
     private String descrizione;
     @NotBlank(message = "Foto non iserita")
     private String url;
-    private Boolean visible;
+    private Boolean visibile;
 
     public Integer getId() {
         return id;
@@ -53,11 +53,11 @@ public class Foto {
         this.url = url;
     }
 
-    public Boolean getVisible() {
-        return visible;
+    public Boolean getVisibile() {
+        return visibile;
     }
 
-    public void setVisible(Boolean visible) {
-        this.visible = visible;
+    public void setVisibile(Boolean visibile) {
+        this.visibile = visibile;
     }
 }

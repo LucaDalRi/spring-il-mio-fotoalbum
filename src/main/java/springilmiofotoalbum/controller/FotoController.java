@@ -1,13 +1,12 @@
 package springilmiofotoalbum.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import springilmiofotoalbum.model.Foto;
 import springilmiofotoalbum.repository.FotoRepository;
@@ -52,6 +51,15 @@ public class FotoController {
     public String create(Model model) {
         model.addAttribute("foto", new Foto());
         return "/create";
+    }
+
+    @PostMapping("/create")
+    public String store(@Valid @ModelAttribute("foto") Foto formFoto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/create";
+        }
+        fotoRepository.save(formFoto);
+        return "redirect:/";
     }
 
 

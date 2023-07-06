@@ -29,7 +29,8 @@
     <div class="d-flex gap-4" th:if="${fotoList.size() > 0}">
         <div class="card" th:each="foto : ${fotoList}">
             <div>
-                <a th:href="@{|/detail/${foto.id}|}"><img class="img-fluid" style="height: 200px; width: 200px;"
+                <a th:href="@{|/detail/${foto.id}|}"><img class="img-fluid rounded object-fit-cover"
+                                                          style="height: 200px; width: 200px;"
                                                           th:src="@{${foto.url}}"></a>
             </div>
             <div>
