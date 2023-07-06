@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{/fragments/resources :: head(pageTitle='Categorie')}">
+</head>
+<body>
+<div class="container">
+    <h1>Categorie</h1>
+    <hr>
+
+    <div class="row">
+        <!-- Lista delle categorie -->
+        <div class="col-6">
+            <ul class="list-group" th:if="${categoria.size() > 0}">
+                <li
+                        class="list-group-item d-flex justify-content-between align-items-center"
+                        th:each="categoria : ${categoria}"
+                        th:object="${categoria}"
+                >
+                    <div>
+                        <h4 th:text="*{nome}"></h4>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <form
+                                method="post"
+                                th:action="@{|/categoria/delete/*{id}|}"
+                        >
+                            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            <div class="alert alert-info" th:unless="${categoria.size() > 0}">
+                Non ci sono categorie
+            </div>
+        </div>
+        <!-- form di creazione/edit della categoria -->
+        <div class="col-6">
+            <form
+                    id="category-form"
+                    method="post"
+                    th:action="@{/categoria/save}"
+                    th:object="${categoriaObj}"
+            >
+                <input th:field="*{id}" type="hidden">
+                <div class="mb-2">
+                    <label class="form-label" for="name">Nome</label>
+                    <input class="form-control" id="name" th:errorClass="is-invalid" th:field="*{nome}"
+                           type="text">
+
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}">
+                        <ul>
+                            <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+                    <input class="form-control" id="id" th:errorClass="is-invalid" th:field="*{id}"
+                           type="hidden" value="0">
+                </div>
+                <div>
+                    <button class="btn btn-success" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
