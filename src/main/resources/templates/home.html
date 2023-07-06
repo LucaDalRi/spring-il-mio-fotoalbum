@@ -22,23 +22,25 @@
         </div>
     </nav>
 </header>
-<main>
-    <div class="d-flex">
-        <div class="card m-3" th:each="foto : ${fotoList}">
+<main class="m-3">
+    <a href="#">
+        <button class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i></button>
+    </a>
+    <div class="d-flex gap-4" th:if="${fotoList.size() > 0}">
+        <div class="card" th:each="foto : ${fotoList}">
             <div>
                 <img class="img-fluid" style="height: 200px; width: 200px;" th:src="@{${foto.url}}">
             </div>
             <div>
                 <p th:text="${foto.titolo}"></p>
                 <p th:text="${foto.descrizione}"></p>
+                <a href="#">
+                    <button class="btn btn-success"><i class="fa-solid fa-pen"></i></button>
+                </a>
             </div>
         </div>
     </div>
 </main>
-<footer>
-    <h2>
-        footer
-    </h2>
-</footer>
+<h1 th:if="${fotoList.size() == 0}">Nessuna foto presente 😒</h1>
 </body>
 </html>
