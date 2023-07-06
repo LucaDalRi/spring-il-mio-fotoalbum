@@ -23,10 +23,25 @@
     </nav>
 </header>
 <main class="m-3">
-    <a th:href="@{/create}">
-        <button class="btn btn-primary mb-3">Aggiungi una foto</button>
-    </a>
-    <div class="d-flex gap-4" th:if="${fotoList.size() > 0}">
+    <div class="d-flex justify-content-between">
+        <div>
+            <a th:href="@{/create}">
+                <button class="btn btn-primary mb-3">Aggiungi una foto</button>
+            </a>
+        </div>
+        <div>
+            <form method="GET" th:action="@{/}">
+                <div class="input-group">
+                    <input class="form-control" name="keyword" placeholder="Cerca per titolo"
+                           th:value="${searchInput}" type="search">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex gap-4 flex-wrap" th:if="${fotoList.size() > 0}">
         <div class="card" th:each="foto : ${fotoList}">
             <div>
                 <a th:href="@{|/detail/${foto.id}|}"><img class="img-fluid rounded object-fit-cover"

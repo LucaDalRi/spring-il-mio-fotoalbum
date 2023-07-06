@@ -3,7 +3,10 @@
 <head th:insert="~{/fragments/resources :: head(pageTitle='Dettagli Foto')}">
 </head>
 <body>
-<div class="d-flex flex-column align-items-center mt-5">
+<div class="d-flex flex-column align-items-center mt-3">
+    <h1>
+        Dettaglio della foto
+    </h1>
     <div class="mb-2">
         <img class="rounded" style="max-width: 700px" th:src="@{${foto.url}}">
     </div>
