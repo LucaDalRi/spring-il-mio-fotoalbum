@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{/fragments/resources :: head(pageTitle='Dettagli Foto')}">
+</head>
+<body>
+<div class="d-flex flex-column align-items-center mt-5">
+    <div class="mb-2">
+        <img style="max-width: 700px" th:src="@{${foto.url}}">
+    </div>
+    <div>
+        <span>Foto ID:</span>
+        <span th:text="${foto.id}"></span>
+        <hr>
+        <span>Titolo Foto:</span>
+        <span th:text="${foto.titolo}"></span>
+        <hr>
+        <span>Descrizione Foto:</span>
+        <span th:text="${foto.descrizione}"></span>
+        <hr>
+        <span>Url Foto:</span>
+        <span th:text="${foto.url}"></span>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

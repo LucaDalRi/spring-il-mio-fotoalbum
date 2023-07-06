@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface FotoRepository extends JpaRepository<Foto, Integer> {
     List<Foto> findByTitolo(String titolo);
+
 }

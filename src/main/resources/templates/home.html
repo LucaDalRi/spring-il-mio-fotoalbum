@@ -23,20 +23,26 @@
     </nav>
 </header>
 <main class="m-3">
-    <a href="#">
-        <button class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i></button>
+    <a th:href="@{/create}">
+        <button class="btn btn-primary mb-3">Aggiungi una foto</button>
     </a>
     <div class="d-flex gap-4" th:if="${fotoList.size() > 0}">
         <div class="card" th:each="foto : ${fotoList}">
             <div>
-                <img class="img-fluid" style="height: 200px; width: 200px;" th:src="@{${foto.url}}">
+                <a th:href="@{|/detail/${foto.id}|}"><img class="img-fluid" style="height: 200px; width: 200px;"
+                                                          th:src="@{${foto.url}}"></a>
             </div>
             <div>
                 <p th:text="${foto.titolo}"></p>
                 <p th:text="${foto.descrizione}"></p>
-                <a href="#">
-                    <button class="btn btn-success"><i class="fa-solid fa-pen"></i></button>
-                </a>
+                <div class="d-flex justify-content-evenly">
+                    <a href="#">
+                        <button class="btn btn-warning"><i class="fa-solid fa-pen"></i></button>
+                    </a>
+                    <a href="#">
+                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
