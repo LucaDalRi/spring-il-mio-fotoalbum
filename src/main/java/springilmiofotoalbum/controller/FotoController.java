@@ -86,6 +86,13 @@ public class FotoController {
         return "redirect:/";
     }
 
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        Foto fotoToDelete = getFotoById(id);
+        fotoRepository.delete(fotoToDelete);
+        return "redirect:/";
+    }
+
 
     private Foto getFotoById(Integer id) {
         Optional<Foto> result = fotoRepository.findById(id);
