@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name = "Foto")
+@Table(name = "foto")
 public class Foto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,24 @@ public class Foto {
     private String url;
 
     private Boolean visibile;
+
+    @ManyToMany
+    @JoinTable(
+            name = "foto_categoria",
+            joinColumns = @JoinColumn(name = "foto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+
+    private List<Categoria> categoria = new ArrayList<>();
+
+
+    public List<Categoria> getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(List<Categoria> categoria) {
+        this.categoria = categoria;
+    }
 
     public Integer getId() {
         return id;
