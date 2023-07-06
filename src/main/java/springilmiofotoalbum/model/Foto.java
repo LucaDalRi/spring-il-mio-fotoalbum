@@ -17,8 +17,9 @@ public class Foto {
     @Size(min = 10, max = 300)
     @NotBlank(message = "Descrizione non può essere vuota")
     private String descrizione;
-    @NotBlank(message = "Foto non iserita")
+    @NotBlank(message = "Foto non inserita")
     private String url;
+
     private Boolean visibile;
 
     public Integer getId() {

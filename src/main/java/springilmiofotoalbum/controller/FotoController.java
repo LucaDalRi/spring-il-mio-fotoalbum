@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springilmiofotoalbum.model.Foto;
 import springilmiofotoalbum.repository.FotoRepository;
 
@@ -62,5 +63,35 @@ public class FotoController {
         return "redirect:/";
     }
 
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+        Foto foto = getFotoById(id);
+        model.addAttribute("foto", foto);
+        return "/edit";
+    }
 
+    @PostMapping("/edit/{id}")
+    public String doEdit(
+            @PathVariable Integer id,
+            @Valid @ModelAttribute("pizza") Foto formFoto,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes
+    ) {
+        Foto fotoToEdit = getFotoById(id);
+        if (bindingResult.hasErrors()) {
+            return "/edit";
+        }
+        formFoto.setId(fotoToEdit.getId());
+        fotoRepository.save(formFoto);
+        return "redirect:/";
+    }
+
+
+    private Foto getFotoById(Integer id) {
+        Optional<Foto> result = fotoRepository.findById(id);
+        if (result.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Foto con id " + id + " non trovato");
+        }
+        return result.get();
+    }
 }
