@@ -29,7 +29,7 @@ public class FotoController {
         if (searchString == null || searchString.isBlank()) {
             foto = fotoRepository.findAll();
         } else {
-            foto = fotoRepository.findByTitolo(searchString);
+            foto = fotoRepository.findByTitoloContainingIgnoreCase(searchString);
         }
         model.addAttribute("fotoList", foto);
         model.addAttribute("searchInput", searchString == null ? "" : searchString);
