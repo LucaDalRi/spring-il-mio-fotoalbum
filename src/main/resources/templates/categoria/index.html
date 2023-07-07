@@ -6,9 +6,7 @@
 <div class="container">
     <h1>Categorie</h1>
     <hr>
-
     <div class="row">
-        <!-- Lista delle categorie -->
         <div class="col-6">
             <ul class="list-group" th:if="${categoria.size() > 0}">
                 <li
@@ -34,7 +32,6 @@
                 Non ci sono categorie
             </div>
         </div>
-        <!-- form di creazione/edit della categoria -->
         <div class="col-6">
             <form
                     id="category-form"

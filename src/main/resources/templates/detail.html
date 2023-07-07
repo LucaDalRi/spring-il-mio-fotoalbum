@@ -11,18 +11,27 @@
         <img class="rounded" style="max-width: 700px" th:src="@{${foto.url}}">
     </div>
     <div>
-        <span>Foto ID:</span>
-        <span th:text="${foto.id}"></span>
-        <hr>
-        <span>Titolo Foto:</span>
-        <span th:text="${foto.titolo}"></span>
-        <hr>
-        <span>Descrizione Foto:</span>
-        <span th:text="${foto.descrizione}"></span>
-        <hr>
-        <span>Url Foto:</span>
-        <span th:text="${foto.url}"></span>
-        <hr>
+        <div>
+            <span>Foto ID:</span>
+            <span th:text="${foto.id}"></span>
+            <hr>
+            <span>Titolo Foto:</span>
+            <span th:text="${foto.titolo}"></span>
+            <hr>
+            <span>Descrizione Foto:</span>
+            <span th:text="${foto.descrizione}"></span>
+            <hr>
+            <span>Url Foto:</span>
+            <span th:text="${foto.url}"></span>
+            <hr>
+        </div>
+        <h3>Categorie :</h3>
+        <div th:each="categoria : ${foto.categoria}">
+            <ul>
+                <li th:text="${categoria.nome}">
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 </body>
