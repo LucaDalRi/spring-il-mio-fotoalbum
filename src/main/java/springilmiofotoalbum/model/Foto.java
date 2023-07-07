@@ -22,7 +22,6 @@ public class Foto {
     private String descrizione;
     @NotBlank(message = "Foto non inserita")
     private String url;
-
     private Boolean visibile;
 
     @ManyToMany

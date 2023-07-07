@@ -7,51 +7,51 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import springilmiofotoalbum.exceptions.FotoNotFoundException;
-import springilmiofotoalbum.model.Foto;
-import springilmiofotoalbum.repository.FotoRepository;
-import springilmiofotoalbum.service.FotoService;
+import springilmiofotoalbum.model.Messaggio;
+import springilmiofotoalbum.repository.MessaggioRepository;
+import springilmiofotoalbum.service.MessaggioService;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1/foto")
-public class FotoRestController {
+@RequestMapping("/api/v1/messaggio")
+public class MessaggioRestController {
 
     @Autowired
-    private FotoRepository fotoRepository;
+    private MessaggioRepository messaggioRepository;
     @Autowired
-    private FotoService fotoService;
+    private MessaggioService messaggioService;
 
     @GetMapping
-    public List<Foto> index(@RequestParam Optional<String> keyword) {
-        return fotoService.getAll(keyword);
+    public List<Messaggio> index(@RequestParam Optional<String> keyword) {
+        return messaggioService.getAll(keyword);
     }
 
     @GetMapping("/{id}")
-    public Foto get(@PathVariable Integer id) {
+    public Messaggio get(@PathVariable Integer id) {
         try {
-            return fotoService.getById(id);
+            return messaggioService.getById(id);
         } catch (FotoNotFoundException | ChangeSetPersister.NotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 
     @PostMapping
-    public Foto create(@Valid @RequestBody Foto foto) {
-        return fotoService.create(foto);
+    public Messaggio create(@Valid @RequestBody Messaggio messaggio) {
+        return messaggioService.create(messaggio);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
-        fotoRepository.deleteById(id);
+        messaggioRepository.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    public Foto update(@PathVariable Integer id, @Valid @RequestBody Foto foto) {
-        foto.setId(id);
-        return fotoRepository.save(foto);
+    public Messaggio update(@PathVariable Integer id, @Valid @RequestBody Messaggio messaggio) {
+        messaggio.setId(id);
+        return messaggioRepository.save(messaggio);
     }
 
 }

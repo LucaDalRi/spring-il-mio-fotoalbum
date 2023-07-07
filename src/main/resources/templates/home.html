@@ -39,12 +39,17 @@
             </form>
         </div>
     </div>
-    <div class="d-flex gap-4 flex-wrap" th:if="${fotoList.size() > 0}">
-        <div class="card" th:each="foto : ${fotoList}">
-            <div>
+    <div class="d-flex gap-4 flex-wrap" th:if="${fotoList   .size() > 0}">
+        <div class="card" style="min-width: 200px;" th:each="foto : ${fotoList}">
+            <div th:if="${foto.visibile == true}">
                 <a th:href="@{|/detail/${foto.id}|}"><img class="img-fluid rounded object-fit-cover"
                                                           style="height: 200px; width: 200px;"
                                                           th:src="@{${foto.url}}"></a>
+            </div>
+            <div class="text-warning" th:unless="${foto.visibile == true}">
+                <h2 style="min-height: 192px;">
+                    non visibile
+                </h2>
             </div>
             <div>
                 <p th:text="${foto.titolo}"></p>
