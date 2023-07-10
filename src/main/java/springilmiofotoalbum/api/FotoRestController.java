@@ -26,7 +26,7 @@ public class FotoRestController {
 
     @GetMapping
     public List<Foto> index(@RequestParam Optional<String> keyword) {
-        return fotoService.getVisibile(keyword);
+        return fotoService.getAll(keyword);
     }
 
     @GetMapping("/{id}")
