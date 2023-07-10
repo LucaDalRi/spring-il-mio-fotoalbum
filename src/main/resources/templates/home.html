@@ -15,6 +15,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" th:href="@{/categoria}">Categorie</a>
+                    <a class="nav-link" th:href="@{/messaggio}">Messaggi</a>
                 </div>
             </div>
         </div>
@@ -47,7 +48,7 @@
                                                           th:src="@{${foto.url}}"></a>
             </div>
             <div class="text-warning" th:unless="${foto.visibile == true}">
-                <h2 style="min-height: 192px;">
+                <h2 style="min-height: 192px; text-align: center;">
                     non visibile
                 </h2>
             </div>

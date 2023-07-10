@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/edit/**").hasAnyAuthority("ADMIN")
                 .requestMatchers("/delete/**").hasAnyAuthority("ADMIN")
                 .requestMatchers("/categoria").hasAnyAuthority("ADMIN")
+                .requestMatchers("/messaggio").hasAnyAuthority("ADMIN")
                 .requestMatchers("/detail/**").hasAnyAuthority("ADMIN", "USER")
 //                .requestMatchers(HttpMethod.POST).hasAuthority("ADMIN")
                 .requestMatchers("/**").permitAll()

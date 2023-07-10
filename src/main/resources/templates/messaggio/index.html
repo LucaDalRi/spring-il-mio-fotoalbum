@@ -3,14 +3,25 @@
 <head th:insert="~{/fragments/resources :: head(pageTitle='I miei messaggi')}">
 </head>
 <body>
-<div class="container" th:each="messaggio : ${messaggio}">
-    <div class="card p-2">
-        <h3 th:text="${messaggio.email}">
-        </h3>
-    </div>
-    <div class="card p-2">
-        <p th:text="${messaggio.testo}">
-        </p>
+<h1 style="text-align: center;">
+    I miei messaggi
+</h1>
+<div class="container" th:each="messaggio : ${messaggioList}">
+    <div class="card border border-warning-subtle my-3">
+        <div class="p-2 mt-4 col-6">
+            <h2>
+                Mittente:
+            </h2>
+            <h4 th:text="${messaggio.email}">
+            </h4>
+        </div>
+        <div class="p-2 col-6">
+            <h2>
+                Messaggio:
+            </h2>
+            <p th:text="${messaggio.testo}">
+            </p>
+        </div>
     </div>
 </div>
 </body>
