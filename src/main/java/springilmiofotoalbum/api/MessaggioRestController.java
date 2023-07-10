@@ -39,7 +39,7 @@ public class MessaggioRestController {
     }
 
     @PostMapping
-    public Messaggio create(@Valid @RequestBody Messaggio messaggio) {
+    public Messaggio create(@RequestBody Messaggio messaggio) {
         return messaggioService.create(messaggio);
     }
 

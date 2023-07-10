@@ -1,0 +1,49 @@
+body {
+    width: 800px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    background: #F99DA8;
+    background: conic-gradient(from 225deg, #F99DA8, #214A76) no-repeat;
+}
+
+h1 {
+    padding-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+
+#mexForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    height: 370px;
+}
+
+#email,
+#testo {
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 30px;
+}
+
+#btn {
+    background-color: #214A76;
+    color: white;
+    height: 40px;
+    width: 50%;
+    margin: 20px auto;
+    border-radius: 40px;
+    border: none;
+}
+
+#email:focus,
+#testo:focus {
+    outline: none;
+}

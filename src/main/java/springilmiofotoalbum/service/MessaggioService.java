@@ -32,9 +32,6 @@ public class MessaggioService {
     }
 
     public Messaggio create(Messaggio messaggio) throws IllegalArgumentException {
-        if (!isUniqueId(messaggio)) {
-            throw new IllegalArgumentException(String.valueOf(messaggio.getId()));
-        }
         Messaggio messaggioToPersist = new Messaggio();
         messaggioToPersist.setId(messaggio.getId());
         messaggioToPersist.setEmail(messaggio.getEmail());
