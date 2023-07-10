@@ -10,4 +10,5 @@ public interface FotoRepository extends JpaRepository<Foto, Integer> {
 
     List<Foto> findByTitoloContainingIgnoreCase(String title);
 
+    List<Foto> findVisibile(Boolean visibile);
 }

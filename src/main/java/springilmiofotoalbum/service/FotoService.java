@@ -50,5 +50,4 @@ public class FotoService {
         return result.isEmpty();
 
     }
-
 }

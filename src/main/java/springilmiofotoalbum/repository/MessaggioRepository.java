@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface MessaggioRepository extends JpaRepository<Messaggio, Integer> {
     List<Messaggio> findByEmail(String email);
+
 }
